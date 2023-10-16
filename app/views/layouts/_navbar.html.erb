@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Your Website</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">Your Logo</div>
+      <ul class="nav-links">
+        <% if current_user %>
+          <li class="nav-item"> <%= link_to "Edit Account", edit_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"> <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-small btn-primary mx-2" %></li>
+        <% else %>
+          <li class="nav-item"> <%= link_to "Sign Up", new_user_registration_path, class: "nav-link"  %></li>
+          <li class="nav-item"> <%= link_to "Sign In", new_user_session_path, class: "nav-link"  %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5em;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-links li {
+    padding: 5px 10px;
+  }
+
+  .nav-links li a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .sign-in, .sign-up {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+
+  .sign-up {
+    background-color: #008CBA; /* Blue */
+  }
+</style>
